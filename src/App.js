@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart/Cart";
@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header auth={this.auth} />
         <Container fluid="true">
           <Route
             path="/"
@@ -29,7 +29,16 @@ class App extends Component {
             path="/callback"
             render={props => <Callback auth={this.auth} {...props} />}
           />
-          <Route path="/profile" component={Profile} />
+          <Route
+            path="/profile"
+            render={props =>
+              this.auth.isAuthenticated() ? (
+                <Profile auth={this.auth} {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          />
           <Route path="/products" component={ProductList} />
           <Route path="/cart" component={Cart} />
         </Container>

@@ -5,6 +5,8 @@ import logo from "../logo.svg";
 
 class Header extends Component {
   render() {
+    const { isAuthenticated, login, logout } = this.props.auth;
+
     return (
       <Navbar bg="light" expand="lg">
         <Navbar.Brand href="/">
@@ -29,7 +31,9 @@ class Header extends Component {
               <a href="#login">Mark Otto</a>
             </Navbar.Text>
 
-            <Nav.Link href="#deets">Logout</Nav.Link>
+            <Nav.Link onClick={isAuthenticated() ? logout : login}>
+              {isAuthenticated() ? "Log Out" : "Log In"}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
