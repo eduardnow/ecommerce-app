@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import Home from "./components/Home";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
+import { ProfileForm } from "./components/Profile/ProfileForm";
 import Cart from "./components/Cart/Cart";
 import ProductList from "./components/Product/ProductList";
 import Header from "./components/Header";
@@ -31,9 +32,20 @@ class App extends Component {
           />
           <Route
             path="/profile"
+            exact
             render={props =>
               this.auth.isAuthenticated() ? (
                 <Profile auth={this.auth} {...props} />
+              ) : (
+                <Redirect to="/" />
+              )
+            }
+          />
+          <Route
+            path="/profile/edit"
+            render={props =>
+              this.auth.isAuthenticated() ? (
+                <ProfileForm auth={this.auth} {...props} />
               ) : (
                 <Redirect to="/" />
               )

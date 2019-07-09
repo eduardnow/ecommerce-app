@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+
 class Profile extends Component {
   state = {
     profile: null,
@@ -22,6 +24,8 @@ class Profile extends Component {
 
     return (
       <>
+        <Button href="/profile/edit">Edit</Button>
+
         <h1>Profile</h1>
         <p>{profile.nickname}</p>
         <img
@@ -30,6 +34,8 @@ class Profile extends Component {
           alt="profile pic"
         />
         <pre>{JSON.stringify(profile, null, 2)}</pre>
+
+        <h2>Address</h2>
       </>
     );
   }
