@@ -10,6 +10,7 @@ import Container from "react-bootstrap/Container";
 import Auth from "./components/Auth/Auth";
 import Callback from "./components/Auth/Callback";
 import Public from "./Public";
+import Private from "./Private";
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,16 @@ class App extends Component {
           <Route path="/products" component={ProductList} />
           <Route path="/cart" component={Cart} />
           <Route path="/public" component={Public} />
+          <Route
+            path="/private"
+            render={props =>
+              this.auth.isAuthenticated() ? (
+                <Private auth={this.auth} {...props} />
+              ) : (
+                this.auth.login()
+              )
+            }
+          />
         </Container>
       </>
     );
