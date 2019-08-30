@@ -24,6 +24,8 @@ class Header extends Component {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href="/cart">Cart</Nav.Link>
+            <Nav.Link href="/public">Public</Nav.Link>
+            <Nav.Link href="/private">Private</Nav.Link>
           </Nav>
 
           <Nav>
