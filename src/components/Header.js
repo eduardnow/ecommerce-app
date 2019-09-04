@@ -26,6 +26,7 @@ class Header extends Component {
             <Nav.Link href="/cart">Cart</Nav.Link>
             <Nav.Link href="/public">Public</Nav.Link>
             <Nav.Link href="/private">Private</Nav.Link>
+            <Nav.Link href="/courses">Courses</Nav.Link>
           </Nav>
 
           <Nav>

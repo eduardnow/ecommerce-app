@@ -6,7 +6,7 @@ class Public extends Component {
   };
 
   componentDidMount() {
-    fetch("public")
+    fetch("/public")
       .then(response => {
         if (response.ok) return response.json();
         throw new Error("Network response was not ok.");
